@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &144191988 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 984875803800749936, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
-  m_PrefabInstance: {fileID: 773067321}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b92ad34b3d8a43c409c0c936194a5612, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &423722494 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 984875803800749936, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
@@ -174,6 +163,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a6975cb4e0b0348a90cbbdafb7e588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allDesigns:
+  - {fileID: 423722494}
+  - {fileID: 1800442137}
+  ownedDesigns:
+  - {fileID: 423722494}
+  - {fileID: 1800442137}
   stakeMarkerPrefab: {fileID: 4089565045785870421, guid: 2d8dfa9606d5bc1478a8c6dae97c05d9, type: 3}
 --- !u!4 &514406889
 Transform:
@@ -343,7 +338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984875803868325428, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 984875803868325428, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -387,17 +382,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
---- !u!114 &549591878 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 984875803800749936, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
-  m_PrefabInstance: {fileID: 541378873}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b92ad34b3d8a43c409c0c936194a5612, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &773067321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -459,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984875803868325428, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 984875803868325428, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -640,7 +624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984875803868325428, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 984875803868325428, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -737,7 +721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984875803868325428, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 984875803868325428, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -781,28 +765,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
---- !u!114 &1567438700 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 984875803800749936, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
-  m_PrefabInstance: {fileID: 2087016149}
+--- !u!1 &1324159863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1324159865}
+  - component: {fileID: 1324159864}
+  m_Layer: 0
+  m_Name: DesignUI Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1324159864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324159863}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b92ad34b3d8a43c409c0c936194a5612, type: 3}
+  m_Script: {fileID: 11500000, guid: 87e5bc01e4a7f554eb6be03fa8be0c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1626024824 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 984875803800749936, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
-  m_PrefabInstance: {fileID: 1040389937}
+  designUIPrefab: {fileID: 5520988461822425127, guid: c256e90e82744fd4ab68353662c13682, type: 3}
+  stakeMarkerPrefab: {fileID: 0}
+--- !u!4 &1324159865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b92ad34b3d8a43c409c0c936194a5612, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_GameObject: {fileID: 1324159863}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 4, z: -3.0587785}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1800442137 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 984875803800749936, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
@@ -814,6 +822,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92ad34b3d8a43c409c0c936194a5612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1883955862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1883955864}
+  - component: {fileID: 1883955863}
+  m_Layer: 0
+  m_Name: MapUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1883955863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883955862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d501637a9376c4c916105c91896f23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapSpaceUIPrefab: {fileID: 6445719451551185698, guid: b4aaac91ee905ad48b98ad467f715e79, type: 3}
+--- !u!4 &1883955864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883955862}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10, y: 4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1924378193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -855,7 +908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984875803868325428, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 984875803868325428, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -964,7 +1017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984875803868325428, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 984875803868325428, guid: c14560c174c56ac48989dcac2e48f68f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1053,12 +1106,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapSize: 10
-  stakePrefab: {fileID: 8517056821726430855, guid: 5cdb91077840a1e42b9dcc476b376e08, type: 3}
-  stakeSize: 1
-  designs:
-  - {fileID: 1567438700}
-  - {fileID: 1626024824}
-  - {fileID: 423722494}
-  - {fileID: 549591878}
-  - {fileID: 144191988}
-  - {fileID: 1800442137}
