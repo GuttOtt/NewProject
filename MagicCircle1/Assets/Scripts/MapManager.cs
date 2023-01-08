@@ -29,14 +29,19 @@ public class MapManager : Singleton<MapManager> {
     public int mapSize;
     public Space[,] map;
     public Space presentSpace;
+    public int xStartLocation = 0;//디버그용
+    public int yStartLocation = 0;//디버그용
 
     protected override void Awake() {  
-        map = new Space[mapSize, mapSize];
-
+        base.Awake();
         Initialize();
     }
 
     void Update() {
+        //For Debug
+        if (Input.GetKeyDown(KeyCode.Y)) {
+            MoveToSpace(map[0, 1]);
+        }
     }
 
     private void Initialize() {
@@ -48,5 +53,37 @@ public class MapManager : Singleton<MapManager> {
                 map[i, j].stake = new Stake();
             }
         }
+
+        presentSpace = map[xStartLocation, yStartLocation];
+    }
+
+    public void MoveToSpace(Space space) {
+        presentSpace = space;
+
+        GameManager.Instance.LoadNewScene();
+    }
+
+    public int GetXOf(Space space) {
+        for (int i = 0; i < mapSize; i++) {
+            for (int j = 0; j < mapSize; j++){
+                if (space == map[i, j]) {
+                    return j;
+                }
+            }
+        }
+        
+        return -1;
+    }
+
+    public int GetYOf(Space space) {
+        for (int i = 0; i < mapSize; i++) {
+            for (int j = 0; j < mapSize; j++){
+                if (space == map[i, j]) {
+                    return i;
+                }
+            }
+        }
+        
+        return -1;
     }
 }

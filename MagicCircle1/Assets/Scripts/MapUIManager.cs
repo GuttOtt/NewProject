@@ -1,16 +1,24 @@
+using System; //For Action
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MapUIManager : Singleton<MapUIManager> {
 	public MapSpaceUI mapSpaceUIPrefab;
+	public GameObject presentSpaceMarker;
+	public GameObject presentSpaceMarkerPrefab;
 
 	public MapSpaceUI[,] mapUI;
 	public Space[,] map;
 
-	void Start() {
+	private void Start() {
 		Initialize();
+
+		GameManager.Instance.onLoadNewScene += UpdateMapUI;
+
+		gameObject.SetActive(false);
 	}
+
 
 	private void Initialize() {
 		map = MapManager.Instance.map;
@@ -28,6 +36,12 @@ public class MapUIManager : Singleton<MapUIManager> {
 		}
 
 		ArrangeUI();
+		DrawPresentSpaceMarker();
+	}
+
+	private void UpdateMapUI() {
+		Destroy(presentSpaceMarker);
+		DrawPresentSpaceMarker();
 	}
 
 	private void ArrangeUI() {
@@ -57,5 +71,28 @@ public class MapUIManager : Singleton<MapUIManager> {
 		}
 
 		return null;
+	}
+
+	private MapSpaceUI GetPresentSpaceUI() {
+		int xLength = map.GetLength(1);
+		int yLength = map.GetLength(0);
+
+		for (int i = 0; i < yLength; i++) {
+			for (int j = 0; j < xLength; j++) {
+				if (mapUI[i, j].space == MapManager.Instance.presentSpace)
+					return mapUI[i, j];
+			}
+		}
+
+		Debug.Log("null");
+		return null;
+	}
+
+	private void DrawPresentSpaceMarker() {
+		MapSpaceUI presentSpaceUI = GetPresentSpaceUI();
+
+		if (presentSpaceUI != null) {
+			presentSpaceMarker = Instantiate(presentSpaceMarkerPrefab, presentSpaceUI.gameObject.transform);
+		}
 	}
 }

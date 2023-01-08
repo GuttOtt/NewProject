@@ -63,7 +63,6 @@ public class DesignUI : MonoBehaviour, IMDUI {
 		Space[,] corSpaces = DesignChecker.CorrespondingSpaces(_design);
 
 		if (corSpaces != null) {
-			Debug.Log("cor");
 			int xLength = corSpaces.GetLength(1);
 			int yLength = corSpaces.GetLength(0);
 

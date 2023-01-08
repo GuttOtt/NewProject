@@ -1,0 +1,42 @@
+ToDo:
+
+1. Stake의 state 변경 시 Action onStateChange 를 실행하도록 변경
+구독자는 MapUIManager
+stake.onSateChange += UpdateUI;
+
+2. 플레이어 이동O
+PlayerInput
+PlayerMove
+
+3. 플레이어 기본 무기와 그 사용O
+PlayerInput
+PlayerUseMagic
+Magic
+MagicGunType : Magic
+BasicMagic : GunType
+
+4. 기본 Monster 생성
+Monster
+LivingEntity?
+
+5. 포탈과 맵 이동O
+Portal
+PortalManager
+MapManager
+
+6. 현재 위치 표시O
+MapManager
+
+7. StakeControl 생성V
+StakeControl
+
+8. 맵에 기본 몬스터 생성
+MapManager
+
+9. 몬스터를 전부 잡을 시 StakeControl과 포탈 생성
+MapManager
+
+10. 리팩토링: Stake랑 Space 진짜 어케 해야됨?
+MonoBehaviour 객체로 분리한다?
+
+현재 Stake랑 Space는 MonoBehaviour를 상속하지 않고 MapManager 속에 데이터 형식으로만 존재하기 때문에, Space와 Stake 관련 기능을 처리/캡슐화 하는데에 적지 않은 문제가 있음.

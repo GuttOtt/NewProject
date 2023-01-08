@@ -7,6 +7,10 @@ public class MapSpaceUI : MonoBehaviour, IMDUI {
 
 	private GameObject info;
 
+	void OnEnable() {
+
+	}
+
 	public void DrawUI() {
 
 	}
