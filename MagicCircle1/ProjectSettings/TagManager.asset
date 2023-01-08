@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Stake
   - Design
+  - DesignUI
   layers:
   - Default
   - TransparentFX
