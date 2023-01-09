@@ -7,8 +7,9 @@ public class MapSpaceUI : MonoBehaviour, IMDUI {
 
 	private GameObject info;
 
-	void OnEnable() {
-
+	void Awake() {
+		MapUIManager.Instance.onUpdate += onUpdate;
+		Debug.Log("onUpdate");
 	}
 
 	public void DrawUI() {
@@ -21,18 +22,6 @@ public class MapSpaceUI : MonoBehaviour, IMDUI {
 
 	public void LeftClicked() {
 		//For Debug
-		if (space.stake.state == 0) {
-			SpriteRenderer spr = gameObject.GetComponent<SpriteRenderer>();
-			spr.color = Color.grey;
-
-			space.stake.state = 1;
-		}
-		else if (space.stake.state == 1) {
-			SpriteRenderer spr = gameObject.GetComponent<SpriteRenderer>();
-			spr.color = Color.white;
-
-			space.stake.state = 0;
-		}
 	}
 
 	public void RightMouseUp() {
@@ -43,5 +32,16 @@ public class MapSpaceUI : MonoBehaviour, IMDUI {
 
 	public void RightMouseDown() {
 		DrawInfo();
+	}
+
+	private void onUpdate() {
+		if (space.stake.state == 0) {
+			SpriteRenderer spr = gameObject.GetComponent<SpriteRenderer>();
+			spr.color = Color.white;
+		}
+		else if (space.stake.state == 1) {
+			SpriteRenderer spr = gameObject.GetComponent<SpriteRenderer>();
+			spr.color = Color.grey;
+		}
 	}
 }

@@ -10,15 +10,19 @@ public class MapUIManager : Singleton<MapUIManager> {
 
 	public MapSpaceUI[,] mapUI;
 	public Space[,] map;
+	public Action onUpdate;
+
+	private void OnEnable() {
+		if (map != null && onUpdate != null)
+			onUpdate();
+	}
 
 	private void Start() {
 		Initialize();
-
-		GameManager.Instance.onLoadNewScene += UpdateMapUI;
+		GameManager.Instance.onLoadNewScene += DrawPresentSpaceMarker;
 
 		gameObject.SetActive(false);
 	}
-
 
 	private void Initialize() {
 		map = MapManager.Instance.map;
@@ -36,11 +40,6 @@ public class MapUIManager : Singleton<MapUIManager> {
 		}
 
 		ArrangeUI();
-		DrawPresentSpaceMarker();
-	}
-
-	private void UpdateMapUI() {
-		Destroy(presentSpaceMarker);
 		DrawPresentSpaceMarker();
 	}
 
@@ -89,8 +88,11 @@ public class MapUIManager : Singleton<MapUIManager> {
 	}
 
 	private void DrawPresentSpaceMarker() {
-		MapSpaceUI presentSpaceUI = GetPresentSpaceUI();
+		if (presentSpaceMarker != null) 
+			Destroy(presentSpaceMarker);
 
+		MapSpaceUI presentSpaceUI = GetPresentSpaceUI();
+		
 		if (presentSpaceUI != null) {
 			presentSpaceMarker = Instantiate(presentSpaceMarkerPrefab, presentSpaceUI.gameObject.transform);
 		}

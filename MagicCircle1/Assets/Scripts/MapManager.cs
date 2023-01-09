@@ -8,6 +8,8 @@ public class Space {
     public bool ifCleared = false;
 }
 
+//Getter와 Setter 만들기 / Setter 호출시 자동으로 MapManager.Instance.onUpdateMap 실행
+//onUpdateMap의 구독자는 MapUIManager 등등 
 public class Stake {
     public int state; // 0 = 꺼짐 / 1 = 켜짐 / 2 = 마법진으로 활성화됨
 
@@ -17,6 +19,7 @@ public class Stake {
 
     public void TurnOn() {
         state = 1;
+
     }
 
     public void TurnOff() {
@@ -55,14 +58,17 @@ public class MapManager : Singleton<MapManager> {
         }
 
         presentSpace = map[xStartLocation, yStartLocation];
+
+        InitializeStakeControl();
     }
 
+    //Move To Space를 Event로 만들어서 GameManager에 넣기?
     public void MoveToSpace(Space space) {
         presentSpace = space;
-
+        
         GameManager.Instance.LoadNewScene();
+        InitializeStakeControl();
     }
-
     public int GetXOf(Space space) {
         for (int i = 0; i < mapSize; i++) {
             for (int j = 0; j < mapSize; j++){
@@ -85,5 +91,11 @@ public class MapManager : Singleton<MapManager> {
         }
         
         return -1;
+    }
+
+    private void InitializeStakeControl() {
+        StakeControl stakeControl = FindObjectOfType<StakeControl>();
+        stakeControl.stake = presentSpace.stake;
+        //stakeControl.SetActive(false);
     }
 }

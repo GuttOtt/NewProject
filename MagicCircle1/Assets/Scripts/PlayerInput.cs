@@ -7,11 +7,13 @@ public class PlayerInput : MonoBehaviour {
 	public string moveHorizontalName = "Horizontal";
 	public string useMagicName = "UseMagic";
 	public string rollName = "Roll";
+	public string interactName = "Interact";
 
 	public float moveVertical { get; private set; }
 	public float moveHorizontal { get; private set; }
 	public bool useMagic { get; private set; }
 	public bool roll { get; private set; }
+	public bool interact { get; private set; }
 	
 	private void Update() {
 		if (GameManager.Instance.isGameOver) {
@@ -27,5 +29,6 @@ public class PlayerInput : MonoBehaviour {
 		moveHorizontal = Input.GetAxis(moveHorizontalName);
 		useMagic = Input.GetButton(useMagicName);
 		roll = Input.GetButton(rollName);
+		interact = Input.GetButtonDown(interactName);
 	}
 }
