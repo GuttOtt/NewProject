@@ -9,7 +9,6 @@ public class MapSpaceUI : MonoBehaviour, IMDUI {
 
 	void Awake() {
 		MapUIManager.Instance.onUpdate += onUpdate;
-		Debug.Log("onUpdate");
 	}
 
 	public void DrawUI() {

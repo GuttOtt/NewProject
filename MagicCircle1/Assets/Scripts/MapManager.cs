@@ -41,10 +41,6 @@ public class MapManager : Singleton<MapManager> {
     }
 
     void Update() {
-        //For Debug
-        if (Input.GetKeyDown(KeyCode.Y)) {
-            MoveToSpace(map[0, 1]);
-        }
     }
 
     private void Initialize() {
@@ -56,18 +52,17 @@ public class MapManager : Singleton<MapManager> {
                 map[i, j].stake = new Stake();
             }
         }
-
-        presentSpace = map[xStartLocation, yStartLocation];
-
-        InitializeStakeControl();
+        
+        if (presentSpace == null) {
+            presentSpace = map[xStartLocation, yStartLocation];
+        }
     }
 
     //Move To Space를 Event로 만들어서 GameManager에 넣기?
     public void MoveToSpace(Space space) {
         presentSpace = space;
-        
         GameManager.Instance.LoadNewScene();
-        InitializeStakeControl();
+        Debug.Log("x: "+GetXOf(presentSpace) + "y: " +GetYOf(presentSpace));
     }
     public int GetXOf(Space space) {
         for (int i = 0; i < mapSize; i++) {
@@ -93,9 +88,4 @@ public class MapManager : Singleton<MapManager> {
         return -1;
     }
 
-    private void InitializeStakeControl() {
-        StakeControl stakeControl = FindObjectOfType<StakeControl>();
-        stakeControl.stake = presentSpace.stake;
-        //stakeControl.SetActive(false);
-    }
 }

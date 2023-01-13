@@ -59,10 +59,29 @@ public class DesignUI : MonoBehaviour, IMDUI {
 		col.size = new Vector2(xLength * blankSize, yLength * blankSize);
 	}
 
+	public void LeftClicked() {
+
+	}
+
+	public void RightMouseUp() {
+		if (info != null) {
+			foreach (GameObject obj in info)
+				Destroy(obj);
+		}
+
+	}
+
+	public void RightMouseDown() {
+		Debug.Log("RightMouseDown");
+		DrawInfo();
+	}
+
 	public void DrawInfo() {
 		Space[,] corSpaces = DesignChecker.CorrespondingSpaces(_design);
+		Debug.Log(corSpaces);
 
 		if (corSpaces != null) {
+			Debug.Log("cor");
 			int xLength = corSpaces.GetLength(1);
 			int yLength = corSpaces.GetLength(0);
 
@@ -80,21 +99,5 @@ public class DesignUI : MonoBehaviour, IMDUI {
 				}
 			}
 		}
-	}
-
-	public void LeftClicked() {
-
-	}
-
-	public void RightMouseUp() {
-		if (info != null) {
-			foreach (GameObject obj in info)
-				Destroy(obj);
-		}
-
-	}
-
-	public void RightMouseDown() {
-		DrawInfo();
 	}
 }

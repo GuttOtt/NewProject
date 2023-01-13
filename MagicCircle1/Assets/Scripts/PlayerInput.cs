@@ -25,10 +25,13 @@ public class PlayerInput : MonoBehaviour {
 			return;
 		}
 
-		moveVertical = Input.GetAxis(moveVerticalName);
-		moveHorizontal = Input.GetAxis(moveHorizontalName);
+		moveVertical = Input.GetAxisRaw(moveVerticalName);
+		moveHorizontal = Input.GetAxisRaw(moveHorizontalName);
 		useMagic = Input.GetButton(useMagicName);
-		roll = Input.GetButton(rollName);
 		interact = Input.GetButtonDown(interactName);
+		roll = Input.GetButtonDown(rollName);
+	}
+
+	private void FixedUpdate() {
 	}
 }

@@ -34,10 +34,6 @@ public class DesignUIManager : Singleton<DesignUIManager> {
 			designUI.SetDesign(design);
 			designUIList.Add(designUI);
 		}
-
-		//Instantiate MDUIClicker
-		GameObject MDUIClicker = new GameObject("MDUIClicker");
-		MDUIClicker.AddComponent<MDUIClicker>();
 	}
 
 	void ArrangeDesignUI() {

@@ -83,7 +83,6 @@ public class MapUIManager : Singleton<MapUIManager> {
 			}
 		}
 
-		Debug.Log("null");
 		return null;
 	}
 

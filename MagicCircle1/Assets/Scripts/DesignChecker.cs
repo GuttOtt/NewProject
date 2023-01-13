@@ -21,11 +21,13 @@ public class DesignChecker {
             }
         }
 
+        Debug.Log("returned null");
         return null;
     }
 
     private static bool CompareSpacesDesign(Space[,] spaces, int[,] design){
         if (spaces.GetLength(0) != design.GetLength(0) || spaces.GetLength(1) != design.GetLength(1)) {
+            
             return false;
         }
 
