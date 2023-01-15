@@ -7,6 +7,7 @@ public class StakeControl : MonoBehaviour, IInteractable {
 
 	public void OnInteract() {
 		stake.OnControlInteracted();
+		Debug.Log(stake.space.XIndex);
 	}
 
 	public void Initialize(Stake _stake) {

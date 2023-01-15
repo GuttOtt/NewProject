@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//각 Space에서 컨트롤 할 수 있도록 한다
-
 public class SpaceUI : MonoBehaviour, IMDUI {
 	public GameObject playerMarkerPrefab;
+	public StakeUI stakeUIPrefab;
 
-	private int xIndex, yIndex;
 	private Space space;
 	private GameObject playerMarker;
+	private StakeUI stakeUI;
+
+	private void Awake() {
+		stakeUI = Instantiate(stakeUIPrefab, this.transform);
+	}
 
 	public void DrawInfo() {
 
@@ -27,14 +30,18 @@ public class SpaceUI : MonoBehaviour, IMDUI {
 		DrawInfo();
 	}
 
-	//MapManager를 통해 각 Space에서 호출
-	public void UpdateUI() {
-		if (space.IsPlayerHere) {
+	//MapUIManager에서 호출
+	public void UpdateUI(Space _space) {
+		space = _space;
+
+		if (MapManager.Instance.presentSpace == space) {
 			DrawPlayerMarker();
 		}
 		else {
 			Destroy(playerMarker);
 		}
+
+		stakeUI.UpdateUI(space.ContainedStake);
 	}
 
 	private void DrawPlayerMarker() {
@@ -46,15 +53,6 @@ public class SpaceUI : MonoBehaviour, IMDUI {
 	}
 
 	public void Initialize(int x, int y, Space _space) {
-		xIndex = x;
-		yIndex = y;
 		space = _space;
-
-		Arrange();
-	}
-
-	public void Arrange() {
-		float uiSize = GetComponent<SpriteRenderer>().bounds.size.x;
-		transform.localPosition = new Vector2(xIndex * uiSize, -yIndex * uiSize);
 	}
 }
