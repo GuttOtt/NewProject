@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c4ac125328bb4347b25e7d148e9b1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 5
   rollSpeed: 3
   rollTime: 0.5
   facing: {x: 0, y: 0}
@@ -419,6 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameOver: 0
+  isUIOn: 1
 --- !u!4 &709680247
 Transform:
   m_ObjectHideFlags: 0
@@ -512,10 +513,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8050f92f4b12d8f429b1507e46b80095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMapSize: 10
-  yMapSize: 10
-  xStartLocation: 8
-  yStartLocation: 7
+  xMapSize: 20
+  yMapSize: 20
+  xStartLocation: 1
+  yStartLocation: 1
   stakeControl: {fileID: 0}
   portalPrefab: {fileID: 624511914626847624, guid: f1f431dcf4e877c46b6550b88628d365, type: 3}
   spaceMono: {fileID: 0}

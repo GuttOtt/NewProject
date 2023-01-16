@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager> {
     public bool isGameOver = false;
+    public bool isUIOn = true;
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.M)) {
@@ -16,10 +17,12 @@ public class GameManager : Singleton<GameManager> {
     private void ControlMDUI() {
         if (MapUIManager.Instance.gameObject.activeSelf) {
             MapUIManager.Instance.gameObject.SetActive(false);
+            isUIOn = false;
         }
         else {
             MapUIManager.Instance.gameObject.SetActive(true);
             MapUIManager.Instance.Centering();
+            isUIOn = true;
         }
 
         

@@ -8,8 +8,54 @@ public class MapUIManager : Singleton<MapUIManager> {
 	public SpaceUI spaceUIPrefab;
 
 	private SpaceUI[,] uiMap; 
+	private int _xScopeOrigin;
+	private int _yScopeOrigin;
+
+	private int xScopeOrigin {
+		get {
+			return _xScopeOrigin;
+		}
+
+		set {
+			_xScopeOrigin = value;
+
+			//Adjusting
+			int xScopeEnd = _xScopeOrigin + uiMapSize - 1; //End index
+			int xMapEnd = MapManager.Instance.xMapSize - 1; //End index
+
+			if (_xScopeOrigin < 0) {
+				_xScopeOrigin = 0;
+			}
+			else if (xMapEnd < xScopeEnd) {
+				int gap = xScopeEnd - xMapEnd;
+				_xScopeOrigin -= gap;
+			}
+		}
+	}
+
+	private int yScopeOrigin {
+		get {
+			return _yScopeOrigin;
+		}
+
+		set {
+			_yScopeOrigin = value;
+
+			int yScopeEnd = _yScopeOrigin + uiMapSize - 1; //End index
+			int yMapEnd = MapManager.Instance.yMapSize - 1; //End index
+
+			if (_yScopeOrigin < 0) {
+				_yScopeOrigin = 0;
+			}
+			else if (yMapEnd < yScopeEnd) {
+				int gap = yScopeEnd - yMapEnd;
+				_yScopeOrigin -= gap;
+			}
+		}
+	}
 
 	private void Update() {
+		MapUIInput();
 	}
 
 	public void Initialize() {
@@ -28,53 +74,49 @@ public class MapUIManager : Singleton<MapUIManager> {
 
 		Centering();
 	}
-
+	
+	//M키를 누를 때 GameManager에서 호출
 	public void Centering() {
 		int xPresent = MapManager.Instance.presentSpace.XIndex;
 		int yPresent = MapManager.Instance.presentSpace.YIndex;
-		int xCenter = xPresent;
-		int yCenter = yPresent;
-		int xMapSize = MapManager.Instance.xMapSize;
-		int yMapSize = MapManager.Instance.yMapSize;
+		int xNewOrigin = xPresent - (int) Mathf.Ceil(uiMapSize / 2);
+		int yNewOrigin = yPresent - (int) Mathf.Ceil(uiMapSize / 2);
 
-		//좌측 끝 체크
-		for (int i = 1; i <= Mathf.Ceil(uiMapSize/2); i++) {
-			if (xPresent - i < 0) {
-				xCenter++;
-			}
-		}
-		//우측 끝 체크
-		for (int i = 1; i <= Mathf.Ceil(uiMapSize/2); i++) {
-			if (xPresent + i >= xMapSize) {
-				xCenter--;
-			}
-		}
-		//위 끝 체크
-		for (int i = 1; i <= Mathf.Ceil(uiMapSize/2); i++) {
-			if (yPresent - i < 0) {
-				yCenter++;
-			}
-		}
-		//아래 끝 체크
-		for (int i = 1; i <= Mathf.Ceil(uiMapSize/2); i++) {
-			if (yPresent + i >= yMapSize) {
-				yCenter--;
-			}
-		}
+		//Property로 인해 자동 보정 됨
+		xScopeOrigin = xNewOrigin;
+		yScopeOrigin = yNewOrigin;
 
-		int xOrigin = xCenter - (int) Mathf.Ceil(uiMapSize / 2);
-		int yOrigin = yCenter - (int) Mathf.Ceil(uiMapSize / 2);
-
-		UpdateMapUI(xOrigin, yOrigin);
+		UpdateMapUI();
 	}
 
-	//M키를 누를 때 GameManager에서 호출
-	private void UpdateMapUI(int xOrigin, int yOrigin) {
+	private void UpdateMapUI() {
 		for (int i = 0; i < uiMapSize; i++) {
 			for (int j = 0; j < uiMapSize; j++) {
-				Space space = MapManager.Instance.map[yOrigin + i, xOrigin + j];
+				Space space = MapManager.Instance.map[yScopeOrigin + i, xScopeOrigin + j];
 				uiMap[i, j].UpdateUI(space);
 			}
 		}
+	}
+
+	private void MapUIInput() {
+		if (Input.GetKeyDown(KeyCode.W)) {
+			TranslateScope(0, -1);
+		}
+		else if (Input.GetKeyDown(KeyCode.A)) {
+			TranslateScope(-1, 0);
+		}
+		else if (Input.GetKeyDown(KeyCode.S)) {
+			TranslateScope(0, 1);
+		}
+		else if (Input.GetKeyDown(KeyCode.D)) {
+			TranslateScope(1, 0);
+		}
+	}
+
+	private void TranslateScope(int x, int y) {
+		xScopeOrigin = xScopeOrigin + x;
+		yScopeOrigin = yScopeOrigin + y;
+
+		UpdateMapUI();
 	}
 }

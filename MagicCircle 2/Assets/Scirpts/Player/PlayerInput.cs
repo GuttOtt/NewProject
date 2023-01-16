@@ -16,7 +16,7 @@ public class PlayerInput : MonoBehaviour {
 	public bool interact { get; private set; }
 	
 	private void Update() {
-		if (GameManager.Instance.isGameOver) {
+		if (GameManager.Instance.isGameOver || GameManager.Instance.isUIOn) {
 			moveVertical = 0;
 			moveHorizontal = 0;
 			useMagic = false;
