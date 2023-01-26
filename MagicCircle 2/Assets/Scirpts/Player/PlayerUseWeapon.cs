@@ -20,7 +20,7 @@ public class PlayerUseWeapon : MonoBehaviour {
 			selectedEffect.TryToUse();
 		}
 
-		if (playerInput.number != -1 && playerInput.number < inventory.weapons.Count) {
+		if (playerInput.number != -1 && playerInput.number - 1 < inventory.weapons.Count) {
 			SelectMagic(playerInput.number - 1);
 		}
 	}

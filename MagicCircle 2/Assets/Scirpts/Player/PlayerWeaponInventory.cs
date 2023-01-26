@@ -31,7 +31,11 @@ public class PlayerWeaponInventory: MonoBehaviour {
 
 	private void InitWeaponUI() {
 		weaponUICanvas = Instantiate(canvasPrefab);
-		weaponUI.Add(Instantiate(weaponUIPrefab, weaponUICanvas.transform));
-		//개수 맞게 수정
+		DontDestroyOnLoad(weaponUICanvas);
+		for (int i = 0; i < numberOfSlot; i++) {
+			weaponUI.Add(Instantiate(weaponUIPrefab, weaponUICanvas.transform));
+			weaponUI[i].gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2((-numberOfSlot + i) * 100, 50);
+		}
+
 	}
 }
