@@ -17,6 +17,7 @@ public class PlayerMove : MonoBehaviour {
 	private void Start() {
 		playerRigidbody = GetComponent<Rigidbody2D>();
 		playerInput = GetComponent<PlayerInput>();
+		DontDestroyOnLoad(this.gameObject);
 	}
 
 	private void FixedUpdate() {

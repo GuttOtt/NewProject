@@ -14,13 +14,31 @@ public class PlayerInput : MonoBehaviour {
 	public bool useMagic { get; private set; }
 	public bool roll { get; private set; }
 	public bool interact { get; private set; }
+	public int number { get; private set; }
+
+	private void Start() {
+		number = -1;
+	}
 	
+	private KeyCode[] keyCodeNumbers = {
+		KeyCode.Alpha1,
+		KeyCode.Alpha2,
+		KeyCode.Alpha3,
+		KeyCode.Alpha4,
+		KeyCode.Alpha5,
+		KeyCode.Alpha6,
+		KeyCode.Alpha7,
+		KeyCode.Alpha8,
+		KeyCode.Alpha9
+	};
+
 	private void Update() {
 		if (GameManager.Instance.isGameOver || GameManager.Instance.isUIOn) {
 			moveVertical = 0;
 			moveHorizontal = 0;
 			useMagic = false;
 			roll = false;
+			number = -1;
 
 			return;
 		}
@@ -30,8 +48,12 @@ public class PlayerInput : MonoBehaviour {
 		useMagic = Input.GetButton(useMagicName);
 		interact = Input.GetButtonDown(interactName);
 		roll = Input.GetButtonDown(rollName);
-	}
-
-	private void FixedUpdate() {
+		
+		number = -1;
+		for (int i = 0; i < keyCodeNumbers.Length; i++) {
+			if (Input.GetKeyDown(keyCodeNumbers[i])) {
+				number = i + 1;
+			}
+		}
 	}
 }

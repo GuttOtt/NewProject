@@ -31,8 +31,9 @@ public class MDUIClicker : MonoBehaviour {
 		mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 		RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
-		if (hit.collider != null)
+		if (hit.collider != null) {
 			return hit.collider.gameObject.GetComponent<IMDUI>();
+		}
 		else
 			return null;
 	}

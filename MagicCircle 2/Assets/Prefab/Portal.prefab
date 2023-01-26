@@ -101,7 +101,7 @@ MonoBehaviour:
   xPortalLocation: -1
   yPortalLocation: -1
   xDistance: 9
-  yDistance: 3
+  yDistance: 4
 --- !u!61 &624511914626847626
 BoxCollider2D:
   m_ObjectHideFlags: 0

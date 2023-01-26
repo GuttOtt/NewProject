@@ -86,10 +86,10 @@ public class MapUIManager : Singleton<MapUIManager> {
 		xScopeOrigin = xNewOrigin;
 		yScopeOrigin = yNewOrigin;
 
-		UpdateMapUI();
+		UpdateUI();
 	}
 
-	private void UpdateMapUI() {
+	public void UpdateUI() {
 		for (int i = 0; i < uiMapSize; i++) {
 			for (int j = 0; j < uiMapSize; j++) {
 				Space space = MapManager.Instance.map[yScopeOrigin + i, xScopeOrigin + j];
@@ -117,6 +117,6 @@ public class MapUIManager : Singleton<MapUIManager> {
 		xScopeOrigin = xScopeOrigin + x;
 		yScopeOrigin = yScopeOrigin + y;
 
-		UpdateMapUI();
+		UpdateUI();
 	}
 }

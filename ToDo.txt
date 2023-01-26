@@ -1,42 +1,33 @@
 ToDo:
 
-1. Stake의 state 변경 시 Action onStateChange 를 실행하도록 변경
-구독자는 MapUIManager
-stake.onSateChange += UpdateUI;
+4. LivingEntity
 
-2. 플레이어 이동O
-PlayerInput
-PlayerMove
+5. Player
 
-3. 플레이어 기본 무기와 그 사용O
-PlayerInput
-PlayerUseMagic
-Magic
-MagicGunType : Magic
-BasicMagic : GunType
+6. Monster
 
-4. 기본 Monster 생성
-Monster
-LivingEntity?
+7. 카메라가 플레이어 따라다니게 + UI가 카메라 따라다니게
 
-5. 포탈과 맵 이동O
-Portal
-PortalManager
-MapManager
+8. SpaceUI 클릭하면 Stake 활성화 되게 - 디버그용
 
-6. 현재 위치 표시O
-MapManager
+9. MagicHealing, MagicSummonDemon 추가
 
-7. StakeControl 생성V
-StakeControl
+10. MagicCircleUI 이동할 수 있게
 
-8. 맵에 기본 몬스터 생성
-MapManager
+11. BasicWeapon 추가O
 
-9. 몬스터를 전부 잡을 시 StakeControl과 포탈 생성
-MapManager
+12. WeaponEffectSword와 그 예시 추가
 
-10. 리팩토링: Stake랑 Space 진짜 어케 해야됨?
-MonoBehaviour 객체로 분리한다?
+13. WeaponEffectHitScan과 그 예시 추가
 
-현재 Stake랑 Space는 MonoBehaviour를 상속하지 않고 MapManager 속에 데이터 형식으로만 존재하기 때문에, Space와 Stake 관련 기능을 처리/캡슐화 하는데에 적지 않은 문제가 있음.
+14. MagicCircleUI에서 전개도가 아닌 스프라이트를 표시하도록
+
+15. MagicCircleUI를 클릭하면 바로 활성화 되는 것이 아닌, 활성화 관련 UI가 먼저 나오도록(전개도와 효과)
+
+16. 구르기 애니메이션
+
+17. Stake에 속성 추가 / UI에 표시까지
+
+18. MagicWeapon의 Status와 Decoration 추가
+
+19. MagicWeaponUI

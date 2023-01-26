@@ -15,10 +15,15 @@ public class Portal : MonoBehaviour {
 	public int xPortalLocation;
 	public int yPortalLocation;
 	public float xDistance = 9;
-	public float yDistance = 3;
+	public float yDistance = 5;
 
 	private void OnTriggerEnter2D(Collider2D col) {
 		if (col.tag == "Player" && space != null) {
+			//플레이어 위치 조정
+			Vector2 playerLocation = new Vector2(-xPortalLocation * (xDistance - 1.5f), yPortalLocation * (yDistance -1.5f));
+			GameObject playerObj = col.gameObject;
+			playerObj.transform.position = playerLocation;
+
 			GameManager.Instance.MoveToSpace(space);
 		}
 	}

@@ -19,6 +19,23 @@ public class Stake {
 		get { return currentState; }
 	}
 
+	public int CurrentStateInt {
+		get {
+			if (currentState == StakeState.TurnedOn) {
+				return 1;
+			}
+			else if (currentState == StakeState.InCircle) {
+				return 2;
+			}
+			else if (currentState == StakeState.Corrupted) {
+				return 3;
+			}
+			else {
+				return 0;
+			}
+		}
+	}
+
 	//각Space 에서 생성
 	public Stake(Space _space) {
 		space = _space;
@@ -49,8 +66,8 @@ public class Stake {
 
 	}
 
-	private void InCircle() {
-
+	public void InCircle() {
+		currentState = StakeState.InCircle;
 	}
 }
 

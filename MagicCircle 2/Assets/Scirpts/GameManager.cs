@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager> {
+    public GameObject playerPrefab;
+
     public bool isGameOver = false;
     public bool isUIOn = true;
 
@@ -12,6 +14,10 @@ public class GameManager : Singleton<GameManager> {
         if (Input.GetKeyDown(KeyCode.M)) {
             ControlMDUI();
         }
+    }
+
+    void Start() {
+        Instantiate(playerPrefab);
     }
 
     private void ControlMDUI() {
@@ -25,15 +31,14 @@ public class GameManager : Singleton<GameManager> {
             isUIOn = true;
         }
 
-        
-        /*
-        if (DesignUIManager.Instance.gameObject.activeSelf) {
-            DesignUIManager.Instance.gameObject.SetActive(false);
+        if (MagicCircleUIManager.Instance.gameObject.activeSelf) {
+            MagicCircleUIManager.Instance.gameObject.SetActive(false);
         }
         else {
-            DesignUIManager.Instance.gameObject.SetActive(true);
+            MagicCircleUIManager.Instance.gameObject.SetActive(true);
+            MagicCircleUIManager.Instance.UpdateUI();
         }
-        */
+        
     }
 
     public void MoveToSpace(Space space) {
