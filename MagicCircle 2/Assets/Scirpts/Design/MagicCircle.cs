@@ -7,10 +7,10 @@ public class MagicCircle : MonoBehaviour {
 	public MagicCircleData data;
 	public Sprite designSprite;
 
-	public void Complete() {
+	public void Complete(Status status) {
 		IMagic magic = GetComponent<IMagic>();
 
-		magic.Activate();
+		magic.Activate(status);
 
 		//인벤토리에서 자신을 삭제
 		//UI 업데이트

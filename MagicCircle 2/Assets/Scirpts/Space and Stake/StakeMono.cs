@@ -31,6 +31,12 @@ public class Status {
 		string statusText = "Power: " + power + "\n" + "Speed: " + speed + "\n" + "Size: " + size;
 		return statusText;
 	}
+
+	public void Plus(Status other) {
+		power += other.power;
+		speed += other.speed;
+		size += other.size;
+	}
 }
 
 public class Stake {

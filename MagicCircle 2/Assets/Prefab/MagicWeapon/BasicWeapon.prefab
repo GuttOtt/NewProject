@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9eb68f0abc866f40b87f0c9374dd5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 35af773453178b146831d91531ce7186, type: 2}
   uiImage: {fileID: 21300000, guid: bf20ae06a1f548049be0f8bf03e8366b, type: 3}
 --- !u!114 &8763038640414201846
 MonoBehaviour:
@@ -60,4 +60,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projPrefab: {fileID: 5743178086629466554, guid: f564a816bb898214cbe4a98ce486b5e0, type: 3}
+  weaponUI: {fileID: 0}
   coolTime: 0.7

@@ -66,15 +66,18 @@ public class MagicCircleUI : MonoBehaviour, IMDUI {
 
 	public void LeftClicked() {
 		Space[,] corSpaces = magicCircle == null ? null : DesignChecker.CorrespondingSpaces(magicCircle);
+		Status status = new Status(0, 0, 0);
 
 		if (corSpaces != null) {
 			foreach (Space space in corSpaces) {
-				if (space.stake.CurrentStateInt == 1)
+				if (space.stake.CurrentStateInt == 1) {
 					space.stake.InCircle();
+					status.Plus(space.stake.status);
+				}
 			}
-			
+			Debug.Log("Decorator Status: \n" + status.StatusText());
 			MapUIManager.Instance.UpdateUI(); //Stake.InCircle에서 하기?
-			magicCircle.Complete();
+			magicCircle.Complete(status);
 		}
 	}
 

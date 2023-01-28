@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "MagicCircleData")]
+[CreateAssetMenu(menuName = "MagicData")]
 
 public class MagicData : ScriptableObject {
 	public float basePower;
 	public float baseSpeed;
-	public float baseArea;
+	public float baseSize;
 }

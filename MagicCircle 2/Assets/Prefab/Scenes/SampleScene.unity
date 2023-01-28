@@ -590,8 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb49a258bbce19408eb26a8b1ed021d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 7719331145117945253, guid: 29ebfc491e62dc24998ca456bbec2c8c, type: 3}
-  data: {fileID: 0}
+  weaponPrefab: {fileID: 7719331145117945253, guid: 29ebfc491e62dc24998ca456bbec2c8c, type: 3}
 --- !u!114 &1417857519 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8049441689629125010, guid: 800c141f1eab4464d990816c3399dfe4, type: 3}

@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MagicWeaponizing: MonoBehaviour, IMagic {
-	public MagicWeapon weapon;	
-	public MagicData data;
+	public MagicWeapon weaponPrefab;
 
-	public void Activate() {
-		PlayerWeaponInventory playerInventory = FindObjectOfType<PlayerWeaponInventory>();
-
-		playerInventory.AddWeapon(weapon);		
+	private MagicWeapon Weaponize(Status status) {
+		MagicWeapon weapon = Instantiate(weaponPrefab);
+		weapon.Decorate(status);
+		return weapon;
 	}
+
+	public void Activate(Status status) {
+		PlayerWeaponInventory playerInventory = FindObjectOfType<PlayerWeaponInventory>();
+		playerInventory.AddWeapon(Weaponize(status));
+	}
+
 }

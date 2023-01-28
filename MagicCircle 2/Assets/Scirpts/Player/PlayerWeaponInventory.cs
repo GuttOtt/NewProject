@@ -14,14 +14,16 @@ public class PlayerWeaponInventory: MonoBehaviour {
 
 	public void Awake() {
 		InitWeaponUI();
-		AddWeapon(basicWeaponPrefab);
+		MagicWeapon basicWeapon = Instantiate(basicWeaponPrefab);
+		AddWeapon(basicWeapon);
 	}
 
-	public void AddWeapon(MagicWeapon weaponPrefab) {
-		MagicWeapon newWeapon = Instantiate(weaponPrefab, this.transform);
-		weapons.Add(newWeapon);
+	public void AddWeapon(MagicWeapon weapon) {
+		weapon.transform.SetParent(this.transform);
+		weapon.transform.localPosition = Vector2.zero;
+		weapons.Add(weapon);
 
-		UIAssign(weapons.Count - 1, newWeapon);
+		UIAssign(weapons.Count - 1, weapon);
 	}
 
 	private void UIAssign(int slotNumber, MagicWeapon weapon) {

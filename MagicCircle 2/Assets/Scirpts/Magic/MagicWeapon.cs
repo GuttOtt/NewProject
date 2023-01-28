@@ -8,18 +8,27 @@ using UnityEngine;
 public class MagicWeapon : MonoBehaviour {
     //GunType, HitScan 등 IWeaponEffect의 구체 클래스의 Start()에서 추가
     public MagicData data;
-    public IMagicStatus status;
+    public Status status;
     public Sprite uiImage;
-    
+
     private WeaponUI _weaponUI;
     private bool ifSelected;
+
+    private void Awake() {
+        status = new Status(data.basePower, data.baseSpeed, data.baseSize);
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.T))
+            DrawStatus();
+    }
 
     public WeaponUI weaponUI {
         get => _weaponUI;
     }
 
-    public void Decorate(IMagicStatus stauts) {
-
+    public void Decorate(Status status) {
+        this.status.Plus(status);
     }
 
     public void Select() {
@@ -34,5 +43,9 @@ public class MagicWeapon : MonoBehaviour {
 
     public void AssignUI(WeaponUI ui) {
         _weaponUI = ui;
+    }
+
+    public void DrawStatus() {
+        Debug.Log(status.StatusText());
     }
 }
