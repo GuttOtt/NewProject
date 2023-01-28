@@ -11,7 +11,7 @@ public class SpaceUI : MonoBehaviour, IMDUI {
 	private StakeUI stakeUI;
 
 	private void Awake() {
-		stakeUI = Instantiate(stakeUIPrefab, this.transform);
+		stakeUI = Instantiate(stakeUIPrefab, transform);
 	}
 
 	public void DrawInfo() {
@@ -28,6 +28,8 @@ public class SpaceUI : MonoBehaviour, IMDUI {
 
 	public void RightMouseDown() {
 		DrawInfo();
+		stakeUI.DrawInfo();
+		Debug.Log("SpaceUiRightDown");
 	}
 
 	//MapUIManager에서 호출

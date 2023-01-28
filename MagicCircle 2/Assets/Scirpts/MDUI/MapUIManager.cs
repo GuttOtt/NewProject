@@ -6,7 +6,9 @@ public class MapUIManager : Singleton<MapUIManager> {
 	public float uiMoveSpeed = 0.1f;
 	public int uiMapSize = 9;
 	public SpaceUI spaceUIPrefab;
+	[SerializeField] Canvas canvasPrefab;
 
+	private Canvas canvas;
 	private SpaceUI[,] uiMap; 
 	private int _xScopeOrigin;
 	private int _yScopeOrigin;
@@ -59,16 +61,17 @@ public class MapUIManager : Singleton<MapUIManager> {
 	}
 
 	public void Initialize() {
-		uiMap = new SpaceUI[uiMapSize, uiMapSize];
+		//Make Canvas
+		canvas = Instantiate(canvasPrefab, this.transform);
 
+		//Make UIs and Map of it
+		uiMap = new SpaceUI[uiMapSize, uiMapSize];
 		for (int i = 0; i < uiMapSize; i++) {
 			for (int j = 0; j < uiMapSize; j++) {
 				//SpaceUI 생성. StakeUI는 SpaceUI의 Start()에서 자동 생성됨
-				SpaceUI ui = Instantiate(spaceUIPrefab, this.transform);
+				SpaceUI ui = Instantiate(spaceUIPrefab, canvas.transform);
 				uiMap[i, j] = ui;
-				
-				float sprSize = ui.GetComponent<SpriteRenderer>().bounds.size.x;
-				ui.transform.localPosition = new Vector2(j, -i) * sprSize;
+				ui.gameObject.GetComponent<RectTransform>().anchoredPosition += new Vector2(j*50, -i*50);
 			}
 		}
 

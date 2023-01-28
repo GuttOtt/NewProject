@@ -248,6 +248,7 @@ MonoBehaviour:
   magicCircleUIPrefab: {fileID: 5546439398564374614, guid: ec53914cc678ce54db07dc24b8876eeb, type: 3}
   xUISize: 2
   yUISize: 3
+  canvasPrefab: {fileID: 6331801426928712950, guid: 3c6c648faf2a5e44a8ee83eb57749929, type: 3}
 --- !u!4 &378886720
 Transform:
   m_ObjectHideFlags: 0
@@ -256,7 +257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378886718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 4.5, z: 0.05496081}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -494,6 +495,7 @@ MonoBehaviour:
   uiMoveSpeed: 0.03
   uiMapSize: 9
   spaceUIPrefab: {fileID: -2528448786721986507, guid: 65ca260b3b639f046937f6aa8aad7ec7, type: 3}
+  canvasPrefab: {fileID: 6331801426928712950, guid: 3c6c648faf2a5e44a8ee83eb57749929, type: 3}
 --- !u!4 &775558813
 Transform:
   m_ObjectHideFlags: 0
@@ -502,7 +504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775558811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 4, z: 0.019077001}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -647,7 +649,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587575244}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

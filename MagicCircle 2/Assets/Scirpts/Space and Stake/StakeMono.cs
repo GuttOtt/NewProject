@@ -2,11 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Status {
+	public Status(float power, float speed, float size) {
+		this.power = power;
+		this.speed = speed;
+		this.size = size;
+	}
+
+	public Status() {
+		Randomize();
+	}
+
+	private float power;
+	private float speed;
+	private float size;
+
+	public void Randomize() {
+		power = Random.Range(0, 5);
+		speed = Random.Range(0, 5);
+		size = Random.Range(0, 5);
+	}
+
+	public Status Copy() {
+		return new Status(power, speed, size);
+	}
+
+	public string StatusText() {
+		string statusText = "Power: " + power + "\n" + "Speed: " + speed + "\n" + "Size: " + size;
+		return statusText;
+	}
+}
+
 public class Stake {
 	public readonly Space space;
 	private StakeMono stakeMono;
 	private StakeUI stakeUI;
 	
+	//StakeStatus
 	public enum StakeState {
 		TurnedOff,
 		TurnedOn,
@@ -14,11 +46,9 @@ public class Stake {
 		Corrupted
 	}
 	private StakeState currentState;
-
 	public StakeState CurrentState {
 		get { return currentState; }
 	}
-
 	public int CurrentStateInt {
 		get {
 			if (currentState == StakeState.TurnedOn) {
@@ -35,6 +65,10 @@ public class Stake {
 			}
 		}
 	}
+
+	//Status
+	private Status _status = new Status();
+	public Status status { get => _status; }
 
 	//각Space 에서 생성
 	public Stake(Space _space) {
