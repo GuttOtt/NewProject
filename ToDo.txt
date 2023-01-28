@@ -1,33 +1,27 @@
 ToDo:
 
-4. LivingEntity
+-LivingEntity
 
-5. Player
+-Player
 
-6. Monster
+-Monster
 
-7. 카메라가 플레이어 따라다니게 + UI가 카메라 따라다니게
+-카메라가 플레이어 따라다니게 + UI가 카메라 따라다니게
 
-8. SpaceUI 클릭하면 Stake 활성화 되게 - 디버그용
+-SpaceUI 클릭하면 Stake 활성화 되게 - 디버그용
 
-9. MagicHealing, MagicSummonDemon 추가
+-MagicHealing, MagicSummonDemon 추가
 
-10. MagicCircleUI 이동할 수 있게
+-MagicCircleUI 이동할 수 있게
 
-11. BasicWeapon 추가O
+-WeaponEffectSword와 그 예시 추가
 
-12. WeaponEffectSword와 그 예시 추가
+-WeaponEffectHitScan과 그 예시 추가
 
-13. WeaponEffectHitScan과 그 예시 추가
+-MagicCircleUI에서 전개도가 아닌 스프라이트를 표시하도록
 
-14. MagicCircleUI에서 전개도가 아닌 스프라이트를 표시하도록
+-MagicCircleUI를 클릭하면 바로 활성화 되는 것이 아닌, 활성화 관련 UI가 먼저 나오도록(전개도와 효과)
 
-15. MagicCircleUI를 클릭하면 바로 활성화 되는 것이 아닌, 활성화 관련 UI가 먼저 나오도록(전개도와 효과)
+-구르기 애니메이션
 
-16. 구르기 애니메이션
-
-17. Stake에 속성 추가 / UI에 표시까지
-
-18. MagicWeapon의 Status와 Decoration 추가
-
-19. MagicWeaponUI
+-MagicWeapon의 Status와 Decoration 추가

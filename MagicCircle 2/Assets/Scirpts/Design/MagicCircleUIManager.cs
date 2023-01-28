@@ -8,6 +8,8 @@ public class MagicCircleUIManager : Singleton<MagicCircleUIManager> {
 	public int yUISize = 3;
 	public MagicCircleUI[,] magicCircleUI;
 
+	[SerializeField] private Canvas canvasPrefab;
+	private Canvas canvas;
 	private int scopeOrigin = 0;
 
 	protected void Start() {
@@ -17,13 +19,15 @@ public class MagicCircleUIManager : Singleton<MagicCircleUIManager> {
 	private void Initialize() {
 		magicCircleUI = new MagicCircleUI[yUISize, xUISize];
 
+		canvas = Instantiate(canvasPrefab, this.transform);
+
 		for (int y = 0; y < yUISize; y++) {
 			for (int x = 0; x < xUISize; x++) {
-				magicCircleUI[y, x] = Instantiate(magicCircleUIPrefab, this.transform);
+				magicCircleUI[y, x] = Instantiate(magicCircleUIPrefab, canvas.transform);
 
-				SpriteRenderer uiSPR = magicCircleUI[y,x].GetComponent<SpriteRenderer>();
-				float uiSpriteSize = uiSPR.bounds.size.x;
-				magicCircleUI[y, x].transform.localPosition = new Vector2(x * uiSpriteSize, -y * uiSpriteSize);
+				RectTransform uiRect = magicCircleUI[y,x].GetComponent<RectTransform>();
+				float uiSpriteSize = uiRect.sizeDelta.x;
+				uiRect.anchoredPosition += new Vector2(x * uiSpriteSize, -y * uiSpriteSize);
 			}
 		}
 

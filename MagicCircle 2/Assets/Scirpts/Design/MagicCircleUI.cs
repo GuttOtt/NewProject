@@ -21,7 +21,7 @@ public class MagicCircleUI : MonoBehaviour, IMDUI {
 		blankParent = new GameObject("BlankParent");
 		blankParent.transform.SetParent(this.transform);
 		blankParent.transform.localPosition = Vector3.zero;
-		blankParent.transform.localPosition += (Vector3.down + Vector3.right) * 0.05f;
+		blankParent.transform.localPosition += (Vector3.down + Vector3.right) * 3f;
 	}
 	
 	public void DrawUI() {
@@ -31,16 +31,13 @@ public class MagicCircleUI : MonoBehaviour, IMDUI {
 		blankList.Clear();
 
 		if (magicCircle != null) {
-			Vector3 pos;
 			Array2DInt design = magicCircle.data.design;
 			int xLength = design.GridSize.x;
 			int yLength = design.GridSize.y;
-			float blankSize = blankPrefabW.GetComponent<SpriteRenderer>().bounds.size.x;
 			
 
 			for (int y = 0; y < yLength; y++) {
 				for (int x = 0; x < xLength; x++) {
-					pos = new Vector3(x * blankSize, -y * blankSize, 0);
 					GameObject newBlank;
 
 					if (design.GetCell(x, y) == 0) {
@@ -50,8 +47,10 @@ public class MagicCircleUI : MonoBehaviour, IMDUI {
 					else {
 						newBlank = Instantiate(blankPrefabB, blankParent.transform);
 					}
-				
-					newBlank.transform.localPosition = pos;
+					
+					RectTransform rect = newBlank.GetComponent<RectTransform>();
+					float blankSize = rect.sizeDelta.x;
+					rect.anchoredPosition += new Vector2(x * blankSize, -y * blankSize);
 					blankList.Add(newBlank);
 
 					blankParent.transform.localScale = new Vector3(1f / yLength, 1f / yLength, 0);
@@ -66,7 +65,7 @@ public class MagicCircleUI : MonoBehaviour, IMDUI {
 	}
 
 	public void LeftClicked() {
-		Space[,] corSpaces = DesignChecker.CorrespondingSpaces(magicCircle);
+		Space[,] corSpaces = magicCircle == null ? null : DesignChecker.CorrespondingSpaces(magicCircle);
 
 		if (corSpaces != null) {
 			foreach (Space space in corSpaces) {
